@@ -1,32 +1,21 @@
 package uk.police.data.api;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import static junit.framework.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
-
+import uk.police.data.api.exception.PoliceResourceException;
+import uk.police.data.api.schema.EngagementMethod;
 import uk.police.data.api.schema.Force;
 import uk.police.data.api.schema.Officer;
-import uk.police.data.api.schema.PoliceResourceException;
 
-public class ForceTest {
-
-    private PoliceAPIGateway api;
-    private MockConnection connection;
-    
-    @Before
-    public void setup(){
-        connection = MockConnection.getConnection();
-        api = PoliceAPIGateway.getNewGateway(connection);
-    }
+public class ForceTest extends AbstractPoliceApiTest{
     
     @Test
     public void testGetForces() throws IOException{
-        createResponse("forces.json", 200);
+        createResponse("forces.json");
        
         List<Force> forces = api.getForces();
         assertTrue(forces.size() == 2);
@@ -39,11 +28,26 @@ public class ForceTest {
     
     @Test
     public void testGetSpecificForce() throws IOException{
+        createResponse("specific_force.json");
+        Force force = api.getSpecificForce("leicestershire");
+        
+        assertEquals("leicestershire", force.getId());
+        assertEquals("Test description", force.getDescription());
+        assertEquals("http://localhost/", force.getUrl());
+        assertEquals("Leicestershire Constabulary", force.getName());
+        assertEquals("123456789", force.getTelephone());
+        assertEquals(4, force.getEngagementMethods().size());
+
+        EngagementMethod em = force.getEngagementMethods().get(0);
+        
+        assertEquals("http://localhost", em.getUrl());
+        assertEquals("title 1", em.getTitle());
+        assertEquals("description 1", em.getDescription());
     }
     
     @Test
     public void testOfficerForForce() throws IOException{
-        createResponse("officer.json", 200);
+        createResponse("officer.json");
         List<Officer> officers = api.getOfficersForForce("leicestershire");
         assertEquals(15, officers.size());
         
@@ -58,18 +62,19 @@ public class ForceTest {
         assertEquals("http://localhost", o.getContactDetails().getEmessaging());
     }
     
-    @Test(expected = PoliceResourceException.class)
+    @Test
     public void testBadResponseFormat() throws IOException {
-        createResponse("bad_format.json", 200);
+        exception.expect(PoliceResourceException.class);
+        createResponse("bad_format.json");
         api.getOfficersForForce("leicestershire");
     }
     
-    
-    
-
-    private void createResponse(String fileName, int code) {
-        InputStream is = ForceTest.class.getResourceAsStream(fileName);
-        connection.withInputStream(is).withResponse(code);
+    @Test
+    public void testBadResponseCode() throws IOException {
+        exception.expect(PoliceResourceException.class);
+        exception.expectMessage("Error retreiving resource (http://data.police.uk/api/forces/leicestershire/people) (404)");
+        createResponse("bad_format.json", 404);
+        api.getOfficersForForce("leicestershire");
     }
     
 }

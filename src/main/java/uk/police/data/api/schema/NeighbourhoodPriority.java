@@ -24,4 +24,22 @@ public class NeighbourhoodPriority {
         .toString();
     }
 
+    public String getIssue() {
+        return issue;
+    }
+
+    public Date getIssueDate() {
+        return issueDate;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public Date getActionDate() {
+        return actionDate;
+    }
+    
+    
+
 }

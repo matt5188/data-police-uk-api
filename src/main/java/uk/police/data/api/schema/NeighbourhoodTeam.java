@@ -12,5 +12,22 @@ public class NeighbourhoodTeam {
     public String toString(){
         return new ToStringBuilder(this).append("name",name).append("rank",rank).toString();
     }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public ContactDetails getContactDetails() {
+        return contactDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+    
     
 }

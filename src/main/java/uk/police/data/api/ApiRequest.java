@@ -10,7 +10,7 @@ import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 
-import uk.police.data.api.schema.PoliceResourceException;
+import uk.police.data.api.exception.PoliceResourceException;
 
 public class ApiRequest {
 
@@ -78,10 +78,10 @@ public class ApiRequest {
         int responseCode = connection.getResponseCode();
         if(responseCode > 300){
             throw new PoliceResourceException(
-                    "Error retreiving resource (" + connection.getURL().toString() + ")" 
-                    + " ("
-                    + responseCode + 
-                    ")");
+                    "Error retreiving resource " +
+                    "(" + connection.getURL() + ") " +
+            		"(" + responseCode + ")"
+            		);
         }
         
     }

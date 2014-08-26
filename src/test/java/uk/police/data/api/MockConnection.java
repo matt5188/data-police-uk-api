@@ -23,6 +23,7 @@ public class MockConnection implements ApiConnection {
         HttpURLConnection con = Mockito.mock(HttpURLConnection.class);
         Mockito.when(con.getInputStream()).thenReturn(inputStream);
         Mockito.when(con.getResponseCode()).thenReturn(responseCode);
+        Mockito.when(con.getURL()).thenReturn(url);
         return con;
     }
     

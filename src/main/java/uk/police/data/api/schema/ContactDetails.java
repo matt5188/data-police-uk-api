@@ -3,6 +3,7 @@ package uk.police.data.api.schema;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ContactDetails {
+    
     private String email;
     private String telephone;
     private String mobile;
@@ -21,6 +22,7 @@ public class ContactDetails {
     @JsonProperty(value = "e-messaging")
     private String emessaging;
     private String blog;
+    private String rss;
 
     public String getEmail() {
         return email;
@@ -84,6 +86,10 @@ public class ContactDetails {
 
     public String getBlog() {
         return blog;
+    }
+
+    public String getRss() {
+        return rss;
     }
 
 }

@@ -12,4 +12,17 @@ public class EngagementMethod {
     public String toString() {
        return new ToStringBuilder(this).append("url", url).append("description", description).append("title",title).toString();
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+    
 }

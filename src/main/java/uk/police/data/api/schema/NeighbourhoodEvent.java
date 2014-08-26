@@ -19,4 +19,29 @@ public class NeighbourhoodEvent {
     public String toString(){
         return new ToStringBuilder(this).append("title",title).append("address",address).append("startDate",startDate).toString();
     }
+
+    public ContactDetails getContactDetails() {
+        return contactDetails;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+    
 }

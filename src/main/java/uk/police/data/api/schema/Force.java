@@ -20,23 +20,16 @@ public class Force {
     private String description;
     private Date fetchedAt;
     
-    private PoliceAPIGateway base;
-    
-    public Force setBasePolice(PoliceAPIGateway base){
-       this.base = base;
-       return this;
-    }
-    
     @Override
     public String toString() {
         return new ToStringBuilder(this).append("id", id).append("name", name).append("url", url).append("telephone", telephone).toString();
     }
 
-    public void fetch() throws IOException {
+    public void fetch(PoliceAPIGateway api) {
         if (fetchedAt != null) {
             return;
         }
-        ApiRequest.request(base).doGet("/forces/" + id, Force.class, this);
+        ApiRequest.request(api).doGet("/forces/" + id, Force.class, this);
     }
 
     public String getId() {

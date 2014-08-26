@@ -64,10 +64,11 @@ public class PoliceAPIGateway {
     
     public List<Force> getForces() {
         List<Force> forces = asList(ApiRequest.request(this).doGet("/forces", Force[].class, null));
-        for(Force f : forces){
-            f.setBasePolice(this);
-        }
         return forces;
+    }
+    
+    public Force getSpecificForce(String id){
+        return ApiRequest.request(this).doGet("/forces/" + id, Force.class, null);
     }
     
     public List<Officer> getOfficersForForce(String forceId) {
@@ -215,7 +216,6 @@ public class PoliceAPIGateway {
         JSON_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         JSON_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM"));
         JSON_MAPPER.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
-        
     }
     
 }

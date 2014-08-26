@@ -10,4 +10,14 @@ public class NeighbourhoodLocation {
     public String toString() {
         return new ToStringBuilder(this).append("force", force).append("neighbourhood", neighbourhood).toString();
     }
+
+    public String getForce() {
+        return force;
+    }
+
+    public String getNeighbourhood() {
+        return neighbourhood;
+    }
+    
+    
 }

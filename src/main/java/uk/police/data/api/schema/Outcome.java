@@ -11,4 +11,22 @@ public class Outcome {
     private Date date;
     @JsonProperty(value = "person_id")
     private Double personId;
+    
+    public CrimeOutcomeCategory getCategory() {
+        return category;
+    }
+    public String getCode() {
+        return code;
+    }
+    public String getName() {
+        return name;
+    }
+    public Date getDate() {
+        return date;
+    }
+    public Double getPersonId() {
+        return personId;
+    }
+    
+    
 }

@@ -1,4 +1,4 @@
-package uk.police.data.api.schema;
+package uk.police.data.api.exception;
 
 public class PoliceResourceException extends RuntimeException {
 

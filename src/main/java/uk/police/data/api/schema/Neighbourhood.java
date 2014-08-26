@@ -20,7 +20,45 @@ public class Neighbourhood {
     
     public String toString(){
         return new ToStringBuilder(this).append("id", id).append("name", name).toString();
-        
+    }
+    public String getUrlForce() {
+        return urlForce;
+    }
+
+    public String getUrlBoundary() {
+        return urlBoundary;
+    }
+
+    public ContactDetails getContactDetails() {
+        return contactDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getWelcomeMessage() {
+        return welcomeMessage;
+    }
+
+    public Point getCentre() {
+        return centre;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public Date getFetchedAt() {
+        return fetchedAt;
     }
     
 }
