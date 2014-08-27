@@ -2,7 +2,8 @@ package uk.police.data.api;
 
 import java.io.InputStream;
 
-import org.junit.Before;
+import org.junit.Before
+;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
@@ -20,11 +21,11 @@ public class AbstractPoliceApiTest {
         api = PoliceAPIGateway.getNewGateway(connection);
     }
     
-    protected void createResponse(String fileName) {
-        createResponse(fileName, 200);
+    protected void createMockResponse(String fileName) {
+        createMockResponse(fileName, 200);
     }
     
-    protected void createResponse(String fileName, int code) {
+    protected void createMockResponse(String fileName, int code) {
         InputStream is = this.getClass().getResourceAsStream(fileName);
         connection.withInputStream(is).withResponse(code);
     }

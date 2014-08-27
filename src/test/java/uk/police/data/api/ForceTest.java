@@ -15,7 +15,7 @@ public class ForceTest extends AbstractPoliceApiTest{
     
     @Test
     public void testGetForces() throws IOException{
-        createResponse("forces.json");
+        createMockResponse("forces.json");
        
         List<Force> forces = api.getForces();
         assertTrue(forces.size() == 2);
@@ -28,7 +28,7 @@ public class ForceTest extends AbstractPoliceApiTest{
     
     @Test
     public void testGetSpecificForce() throws IOException{
-        createResponse("specific_force.json");
+        createMockResponse("specific_force.json");
         Force force = api.getSpecificForce("leicestershire");
         
         assertEquals("leicestershire", force.getId());
@@ -47,7 +47,7 @@ public class ForceTest extends AbstractPoliceApiTest{
     
     @Test
     public void testOfficerForForce() throws IOException{
-        createResponse("officer.json");
+        createMockResponse("officer.json");
         List<Officer> officers = api.getOfficersForForce("leicestershire");
         assertEquals(15, officers.size());
         
@@ -65,7 +65,7 @@ public class ForceTest extends AbstractPoliceApiTest{
     @Test
     public void testBadResponseFormat() throws IOException {
         exception.expect(PoliceResourceException.class);
-        createResponse("bad_format.json");
+        createMockResponse("bad_format.json");
         api.getOfficersForForce("leicestershire");
     }
     
@@ -73,8 +73,9 @@ public class ForceTest extends AbstractPoliceApiTest{
     public void testBadResponseCode() throws IOException {
         exception.expect(PoliceResourceException.class);
         exception.expectMessage("Error retreiving resource (http://data.police.uk/api/forces/leicestershire/people) (404)");
-        createResponse("bad_format.json", 404);
+        createMockResponse("bad_format.json", 404);
         api.getOfficersForForce("leicestershire");
     }
     
 }
+

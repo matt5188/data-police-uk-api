@@ -137,7 +137,7 @@ public class PoliceAPIGateway {
                 ApiRequest.request(this)
                .addParameter("date", Util.formatDate(date))
                .addParameter("lat", latitude)
-            .   addParameter("lng", longitude)
+               .addParameter("lng", longitude)
                .doPost("/outcomes-at-location", CrimeOutcome[].class, null)
            );
     }

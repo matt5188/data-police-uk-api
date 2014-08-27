@@ -76,7 +76,12 @@ public class ApiRequest {
     
     private void checkResponseStatus(HttpURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
-        if(responseCode > 300){
+        /**
+         * As per documentation
+         * If a request succeeds, the API will return a 200 status code.
+         * If a request fails, the API will return a non-200 status code.
+         */
+        if(responseCode != 200){
             throw new PoliceResourceException(
                     "Error retreiving resource " +
                     "(" + connection.getURL() + ") " +
