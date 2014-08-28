@@ -8,7 +8,8 @@ There were no existing Java libraries providing total access to this information
 
 ## Example Usage
 ```java
-PoliceAPIGateway base = PoliceAPIGateway.getNewGateway();
+//Create a new gateway to the API
+PoliceData base = PoliceData.getNewGateway();
 // Get all forces
 List<Force> forces = base.getForces();
 // Get specific force
@@ -19,10 +20,13 @@ List<StreetLevelAvailability> crimeDates = base.getStreetLevelAvailability();
 for (StreetLevelAvailability sla : crimeDates) {
     base.getCrimeAtLocation(sla.getDate(), 52.629729, -1.131592);
 }
+
 ```
 
 ## TODOs
-More test coverage 
-Refactor tests to call actual API rather than using static test data files
-Refactor the way we construct a url for easier testing
+- Increase test coverage, this is currently limited to the Force API 
+- Re-factor tests to use the real API end points over static files
+- Re-factor the way we construct a url for easier testing
+- Increase classes with Java Doc comments
+- Add toString , hashCode and equals to all schema objects
 

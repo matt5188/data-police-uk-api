@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 
 public class AbstractPoliceApiTest {
 
-    protected PoliceAPIGateway api;
+    protected PoliceData api;
     protected MockConnection connection;
     
     @Rule
@@ -18,7 +18,7 @@ public class AbstractPoliceApiTest {
     @Before
     public void setup(){
         connection = MockConnection.getConnection();
-        api = PoliceAPIGateway.getNewGateway(connection);
+        api = PoliceData.getNewGateway(connection);
     }
     
     protected void createMockResponse(String fileName) {

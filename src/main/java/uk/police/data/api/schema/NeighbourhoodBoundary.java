@@ -3,7 +3,7 @@ package uk.police.data.api.schema;
 import java.util.List;
 import java.util.Set;
 
-public class NeighbourhoodBoundry {
+public class NeighbourhoodBoundary {
 
     private List<Point> points;
     

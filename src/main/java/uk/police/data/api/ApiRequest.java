@@ -15,14 +15,14 @@ import uk.police.data.api.exception.PoliceResourceException;
 public class ApiRequest {
 
     private String requestMethod = "GET";
-    private PoliceAPIGateway context;
+    private PoliceData context;
     private Map<String, Object> parameters = new LinkedHashMap<>();
     
-    public static ApiRequest request (PoliceAPIGateway api){
+    public static ApiRequest request (PoliceData api){
         return new ApiRequest(api);
     }
     
-    public ApiRequest(PoliceAPIGateway api){
+    public ApiRequest(PoliceData api){
         this.context = api;
     }
     
@@ -63,10 +63,10 @@ public class ApiRequest {
             isReader = new InputStreamReader(stream);
             String response = IOUtils.toString(isReader); 
             if (existing != null) {
-                return PoliceAPIGateway.getJsonMapper().readerForUpdating(existing).readValue(response);
+                return PoliceData.getJsonMapper().readerForUpdating(existing).readValue(response);
             }
             if (type != null) {
-                return PoliceAPIGateway.getJsonMapper().readValue(response, type);
+                return PoliceData.getJsonMapper().readValue(response, type);
             }
             return null;
         } finally {

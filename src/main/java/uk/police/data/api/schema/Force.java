@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import uk.police.data.api.ApiRequest;
-import uk.police.data.api.PoliceAPIGateway;
+import uk.police.data.api.PoliceData;
 
 public class Force {
 
@@ -25,7 +25,7 @@ public class Force {
         return new ToStringBuilder(this).append("id", id).append("name", name).append("url", url).append("telephone", telephone).toString();
     }
 
-    public void fetch(PoliceAPIGateway api) {
+    public void fetch(PoliceData api) {
         if (fetchedAt != null) {
             return;
         }
