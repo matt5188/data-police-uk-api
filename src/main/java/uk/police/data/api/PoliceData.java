@@ -55,7 +55,7 @@ public class PoliceData {
      * Instantiates a new PoliceData object
      * @return a new instance of PoliceData class
      */
-    public static PoliceData getNewGateway(){
+    public static PoliceData create(){
         return new PoliceData();
     }
     
@@ -66,7 +66,7 @@ public class PoliceData {
      * @param connection <code>ApiConnection</code> to use
      * @return a new instance of PoliceData class
      */
-    public static PoliceData getNewGateway(ApiConnection connection){
+    public static PoliceData create(ApiConnection connection){
         return new PoliceData(DEFAULT_URL, connection);
     }
     

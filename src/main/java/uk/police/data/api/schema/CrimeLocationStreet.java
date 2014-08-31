@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class CrimeLocationStreet {
     
     private Long id;
@@ -12,5 +14,8 @@ public class CrimeLocationStreet {
         return name;
     }
     
+    public String toString(){
+        return new ToStringBuilder(this).append("id",id).append("name",name).toString();
+    }
     
 }

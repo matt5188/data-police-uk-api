@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ContactDetails {
@@ -90,6 +92,16 @@ public class ContactDetails {
 
     public String getRss() {
         return rss;
+    }
+    
+    public String toString(){
+       return new ToStringBuilder(this)
+       .append("email",email)
+       .append("telephone", telephone)
+       .append("mobile",mobile)
+       .append("fax", fax)
+       .append("web",web)
+       .toString();
     }
 
 }

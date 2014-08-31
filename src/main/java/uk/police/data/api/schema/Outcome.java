@@ -2,6 +2,8 @@ package uk.police.data.api.schema;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Outcome {
@@ -26,6 +28,16 @@ public class Outcome {
     }
     public Double getPersonId() {
         return personId;
+    }
+    
+    public String toString(){
+        return new ToStringBuilder(this)
+        .append("category", category)
+        .append("code", code)
+        .append("name", name)
+        .append("date", date)
+        .append("personId",personId)
+        .toString();
     }
     
     

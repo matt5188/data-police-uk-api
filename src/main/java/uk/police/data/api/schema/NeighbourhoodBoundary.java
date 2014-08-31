@@ -3,6 +3,8 @@ package uk.police.data.api.schema;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class NeighbourhoodBoundary {
 
     private List<Point> points;
@@ -13,6 +15,10 @@ public class NeighbourhoodBoundary {
 
     public List<Point> getPoints() {
         return points;
+    }
+    
+    public String toString(){
+        return new ToStringBuilder(this).append("points", points).toString();
     }
     
 }

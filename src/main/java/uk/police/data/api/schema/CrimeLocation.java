@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 
 public class CrimeLocation {
     
@@ -15,6 +17,10 @@ public class CrimeLocation {
     }
     public CrimeLocationStreet getStreet() {
         return street;
+    }
+    
+    public String toString(){
+        return new ToStringBuilder(this).append("latitude",latitude).append("longitude", longitude).append("street",street).toString();
     }
     
 }

@@ -18,7 +18,7 @@ public class AbstractPoliceApiTest {
     @Before
     public void setup(){
         connection = MockConnection.getConnection();
-        api = PoliceData.getNewGateway(connection);
+        api = PoliceData.create(connection);
     }
     
     protected void createMockResponse(String fileName) {

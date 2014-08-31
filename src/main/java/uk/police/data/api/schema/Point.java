@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Point {
 
     private Double latitude;
@@ -10,6 +12,10 @@ public class Point {
     }
     public Double getLongitude() {
         return longitude;
+    }
+    
+    public String toString(){
+        return new ToStringBuilder(this).append("latitude",latitude).append("longitude",longitude).toString();
     }
     
     

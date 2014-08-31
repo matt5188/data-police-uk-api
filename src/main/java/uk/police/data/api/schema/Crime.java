@@ -18,10 +18,6 @@ public class Crime {
     private String locationSubtype;
     private CrimeOutcomeStatus outcomeStatus;
 
-    public String toString(){
-        return new ToStringBuilder(this).append("persistentId", persistentId).append("category", category).toString();
-    }
-
     public String getCategory() {
         return category;
     }
@@ -56,6 +52,10 @@ public class Crime {
 
     public CrimeOutcomeStatus getOutcomeStatus() {
         return outcomeStatus;
+    }
+    
+    public String toString(){
+        return new ToStringBuilder(this).append("persistentId", persistentId).append("category", category).toString();
     }
     
 

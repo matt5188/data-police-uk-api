@@ -2,6 +2,8 @@ package uk.police.data.api.schema;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class CrimeOutcomeStatus {
     
     private String category;
@@ -14,5 +16,8 @@ public class CrimeOutcomeStatus {
         return date;
     }
     
+    public String toString(){
+        return new ToStringBuilder(this).append("category", category).append("date", date).toString();
+    }
     
 }
