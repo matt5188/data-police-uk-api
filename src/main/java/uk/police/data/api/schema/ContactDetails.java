@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -94,6 +96,7 @@ public class ContactDetails {
         return rss;
     }
     
+    @Override
     public String toString(){
        return new ToStringBuilder(this)
        .append("email",email)
@@ -103,5 +106,48 @@ public class ContactDetails {
        .append("web",web)
        .toString();
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ContactDetails)){
+            return false;
+        }
+        if(this == obj){
+            return true;
+        }
+        ContactDetails c2 = (ContactDetails) obj;
+        EqualsBuilder eb = new EqualsBuilder();
+        eb.append(c2.address, address)
+        .append(c2.bebo, bebo)
+        .append(c2.email, email)
+        .append(c2.telephone, telephone)
+        .append(c2.mobile, mobile)
+        .append(c2.fax  , fax)
+        .append(c2.web , web)
+        .append(c2.address, address)
+        .append(c2.facebook, facebook)
+        .append(c2.twitter, twitter)
+        .append(c2.youtube, youtube)
+        .append(c2.myspace, myspace)
+        .append(c2.bebo  , bebo)
+        .append(c2.flickr, flickr)
+        .append(c2.googlePlus, googlePlus)
+        .append(c2.forum, googlePlus)
+        .append(c2.emessaging, googlePlus)
+        .append(c2.blog, googlePlus)
+        .append(c2.rss, googlePlus);
+        
+        return eb.isEquals();
+    }
+    
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hcb = new HashCodeBuilder();
+        hcb.append(email).append(telephone).append(mobile).append(fax).append(web).append(address);
+        return hcb.hashCode();
+    }
+    
+    
+    
 
 }
