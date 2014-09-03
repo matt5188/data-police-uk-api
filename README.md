@@ -13,25 +13,21 @@ PoliceData base = PoliceData.create();
 // Get all forces
 List<Force> forces = base.getForces();
 for(Force f : forces){
-    print(f);
+   System.out.println(f);
 }
 
 // Get specific force
 Force force = base.getSpecificForce("leicestershire");
-print(force);
+System.out.println(force);
 
 // Get list of dates crime information is available for
 List<StreetLevelAvailability> crimeDates = base.getStreetLevelAvailability();
 // Get crime data for each data at latitude longitude
     for (StreetLevelAvailability sla : crimeDates) {
         List<Crime> crimes = base.getCrimeAtLocation(sla.getDate(), 52.629729, -1.131592);
-        print(crimes);
+        System.out.println(crimes.size());
     }
     
-}
-
-private static void print(Object f) {
-    System.out.println(f);
 }
 
 ```
@@ -41,6 +37,6 @@ private static void print(Object f) {
 - Re-factor tests to use the real API end points over static files
 - Re-factor the way we construct a url for easier testing
 - Increase classes with Java Doc comments
-- Add hashCode and equals to all schema objects
+- Finishing adding hashCode and equals to all schema objects
 - Make list of crime categories for use within the API
 
