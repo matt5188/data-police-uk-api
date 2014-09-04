@@ -1,10 +1,10 @@
 package uk.police.data.api.schema;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import uk.police.data.api.ApiRequest;
@@ -54,6 +54,25 @@ public class Force {
 
     public String getDescription() {
         return description;
+    }
+    
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hcb = new HashCodeBuilder();
+        return hcb.append(description).append(telephone).append(name).toHashCode();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Force)) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        Force c2 = (Force) obj ;
+        EqualsBuilder eb = new EqualsBuilder();
+        return eb.append(c2.id, id).append(c2.name, name).append(c2.telephone, telephone).append(c2.description, description).isEquals();
     }
 
 }

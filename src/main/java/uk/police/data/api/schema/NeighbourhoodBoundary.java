@@ -21,4 +21,22 @@ public class NeighbourhoodBoundary {
         return new ToStringBuilder(this).append("points", points).toString();
     }
     
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof NeighbourhoodBoundary)) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        NeighbourhoodBoundary c2 = (NeighbourhoodBoundary) obj ;
+        
+        return c2.getPoints().equals(this.getPoints());
+    }
+    
 }

@@ -1,5 +1,7 @@
 package uk.police.data.api.schema;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class NeighbourhoodTeam {
@@ -28,6 +30,23 @@ public class NeighbourhoodTeam {
     public String getRank() {
         return rank;
     }
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hcb = new HashCodeBuilder();
+        return hcb.append(rank).append(contactDetails).append(name).append(bio).toHashCode();
+    }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof NeighbourhoodTeam)) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        NeighbourhoodTeam p2 = (NeighbourhoodTeam) obj ;
+        EqualsBuilder eb = new EqualsBuilder();
+        return eb.append(p2.bio, bio).append(p2.contactDetails, contactDetails).append(p2.name, name).append(p2.rank, rank).isEquals();
+    }
     
 }

@@ -7,6 +7,11 @@ public class Util {
     
     private Util(){}
     
+    /**
+     * Return a String formatted as yyyy-MM
+     * @param date
+     * @return
+     */
     public static String formatDate(Date date) {
         if(date == null){
             return null;
